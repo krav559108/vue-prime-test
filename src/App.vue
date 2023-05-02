@@ -1,26 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <div>DateTime picker</div>
+    <TimePicker v-model="selectedTime" />
+    <div>Сброс значений в Select</div>
+    <div>
+      <MultiselectWithReset />
+    </div>
+    <div>
+      <!-- <DataTable/> -->
+    </div>
+  </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TimePicker from "./components/TimePicker.vue";
+import MultiselectWithReset from "./components/MultiselectWithReset.vue";
+import DataTable from "./components/DataTable.vue";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    TimePicker,
+    MultiselectWithReset,
+    DataTable,
+  },
+  data() {
+    return {
+      selectedTime: "",
+      options: [
+        { label: "Option 1", value: "option1" },
+        { label: "Option 2", value: "option2" },
+        { label: "Option 3", value: "option3" },
+      ],
+      selectedOptions: [],
+      placeholder: "Select options",
+    };
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+body {
+  font-family: var(--font-family);
 }
 </style>
